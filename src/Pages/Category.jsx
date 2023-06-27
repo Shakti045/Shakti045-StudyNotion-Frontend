@@ -71,7 +71,7 @@ function Category() {
            <button className=" text-yellow-50">Most Popular</button>
            <button>New</button>
            </div>
-           <div className="  grid lg:grid-cols-3 grid-cols-1  gap-10" >
+           <div className="  mx-auto grid lg:grid-cols-3 grid-cols-1  gap-10" >
              {
              topratedcourse.map((data,index)=>{
                 return <Coursecard key={index} {...data}></Coursecard>
@@ -92,7 +92,7 @@ function Category() {
            <button className=" text-yellow-50">Most Popular</button>
            <button>New</button>
            </div>
-           <div className="  grid lg:grid-cols-3 grid-cols-1  gap-10" >
+           <div className=" mx-auto grid lg:grid-cols-3 grid-cols-1  gap-10" >
              {
                othercourse.map((data,index)=>(
                 <Coursecard key={index} {...data}></Coursecard>

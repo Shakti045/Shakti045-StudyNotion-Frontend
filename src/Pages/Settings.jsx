@@ -122,7 +122,7 @@ function Settings() {
                 <h1 className=" text-4xl font-bold">Edit Profile</h1>
                </div>
 
-            <div className=" border-[1px] border-richblack-600  flex justify-between items-center lg:p-10 rounded-md bg-richblack-800">
+            <div className=" border-[1px] border-richblack-600  flex justify-between items-center lg:p-10 p-2 rounded-md bg-richblack-800">
               <div className=" flex gap-3  items-center">
                     <img className=" h-[80px] w-[80px] rounded-full" src={user.profilephoto} alt="profilephoto"></img>
                     <div className=" flex flex-col gap-1">

@@ -33,7 +33,7 @@ function Cart() {
           </div>
              {
               cartitems.length>0?<div className=" flex flex-col gap-6  lg:flex-row lg:gap-0  lg:justify-between">
-              <div className=" flex flex-col lg:w-[75%] bg-yellow-800  gap-5">
+              <div className=" flex flex-col lg:w-[75%]   gap-5">
               {
               cartitems.map((data,index)=>{
                 return <Cartitem key={index} {...data}></Cartitem>

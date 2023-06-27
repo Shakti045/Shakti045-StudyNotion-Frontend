@@ -18,7 +18,7 @@ function Cartitem({category,_id,price,rating,thumbnail,title}) {
     }
   return (
     <div className=" w-full   transition-transform hover:scale-[1.02] duration-700 p-2 bg-richblack-800 border-b-4 rounded-lg flex lg:flex-row flex-col gap-6 ">
-        <div className=" lg:w-[50%] w-[95vw]">
+        <div className=" mx-auto lg:mx-0 lg:w-[50%] w-[95vw]">
             <Img src={thumbnail?thumbnail:defaulcoursethumbnail} className={"lg:h-[200px] h-[250px] lg:w-[300px] w-[90vw] rounded-lg"}></Img>
         </div>
       <div className="lg:w-[50%] flex flex-col gap-2 lg:gap-0 lg:justify-around">
