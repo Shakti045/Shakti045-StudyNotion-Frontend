@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+ 
+.bannervideo{
+    box-shadow:-15px -15px 15px rgba(255, 255, 255, 0.18);
+    /* box-shadow: 0px -1px 0px rgba(255, 255, 255, 0.18); */
+    
+    
+}
+
+/* .coding{
+    background-image:-webkit-radial-gradient(red,black)
+} */
+
+.instructorimage{
+    box-shadow:-15px -15px 10px;
+}
+.cousreclicked{
+  
+    box-shadow: 5px 5px 5px 2px red;
+}
+.coursernotclicked{
+    
+    box-shadow: 5px 5px 5px 2px skyblue;
+}
+
+.catalog{
+    background-image: url("../src/assets/Images/bghome.svg");
+}
+.timelineimage{
+    box-shadow: 5px 5px 30px 2px blue,-5px -5px 30px 2px blue;
+}
+.active{
+ color: yellow;
+}
+
+
+/* 
+.otpinput::-webkit-inner-spin-button,
+.otpinput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.aboutphonenumber::-webkit-inner-spin-button,
+.aboutphonenumber::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.profilecontact::-webkit-inner-spin-button,
+.profilecontact::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; */
+
+
+
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
+.custom-loader {
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:conic-gradient(#0000 10%,#766DF4);
+    -webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+    animation:s3 1s infinite linear;
+  }
+  @keyframes s3 {to{transform: rotate(1turn)}}
+
+  .abouttext::-webkit-scrollbar{
+    display: none;
+    
+  }
+
+  .aboutimage{
+    box-shadow: -5px -5px 15px 2px red,5px 5px 15px 2px red;
+  }
+
+  .profilesection::-webkit-scrollbar{
+  display: none;
+  }
+
+  .subsectionform::-webkit-scrollbar{
+    display: none;
+  }
