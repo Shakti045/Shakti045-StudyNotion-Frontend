@@ -2,7 +2,7 @@ import { useState } from "react";
 import { apiConnector } from "../services/api";
 import { course } from "../services/url";
 // import { toast as toast } from "react-toastify";
-import { toast as toast2 } from "react-hot-toast";
+import { toast as toast2 } from "react-toastify";
 import { useEffect } from "react";
 import DashboardCoursecard from "../Components/Dashboard/DashboardCoursecard";
 function Allcourse() {

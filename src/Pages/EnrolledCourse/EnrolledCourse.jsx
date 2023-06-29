@@ -1,55 +1,60 @@
-import { useState } from "react"
-import CourseBar from "../../Components/EnrolledCourse/CourseBar"
-import CourseVideo from "../../Components/EnrolledCourse/CourseVideo"
-import { useNavigate, useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router";
 import { apiConnector } from "../../services/api";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { section } from "../../services/url";
+import { course } from "../../services/url";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect,useState } from "react";
+import { set_completedvideos, set_currentcoursedata, set_totalvideos } from "../../redux/slices/enrolledcourse";
+import Loader from "../../Components/common/Loader";
+import CourseBar from "../../Components/EnrolledCourse/CourseBar";
 import { toast } from "react-toastify";
+import {FiMenu} from "react-icons/fi";
 function EnrolledCourse() {
-  const {user}=useSelector((state)=>state.user);
-  const {token}=useSelector((state)=>state.auth);
-  const [showotpions,setshowoptions]=useState(true);
+  const [loading,setloading]=useState(false);
   const {courseid}=useParams();
+  const {token}=useSelector((state)=>state.auth);
+  const dispatch=useDispatch();
+  const {user}=useSelector((state)=>state.user);
   const navigate=useNavigate();
-  const [sectiondata,setsectiondata]=useState([]);
-  const [coursetitle,setcoursetitle]=useState();
-  async function checkenrollment(){
+  async function getfullcoursedata(){
+    setloading(true);
     const loadingtoast=toast.loading("Please wait.....")
     try{
-     const {data}=await apiConnector("POST",section.getsectionsofacourseurl,{courseid:courseid},{
+      const {data}=await apiConnector("POST",course.getfulldetailsofcourseurl,{courseid:courseid},{
         Authorization:`Bearer ${token}`
-    });
-      if(data.data.studentsenrolled.indexOf(user._id)===-1){
+      })
+      // console.log(data);
+      if(data.coursedetails.studentsenrolled.indexOf(user._id)===-1){
         navigate("/error");
-        toast.dismiss(loadingtoast);
+        toast.warn("You arenot enrolled to this course")
+        toast.dismiss(loadingtoast)
         return;
       }
-      setcoursetitle(data?.data?.title);
-      setsectiondata(data?.data?.sections);
+      dispatch(set_completedvideos(data.completedvideos));
+      dispatch(set_currentcoursedata(data.coursedetails));
+      dispatch(set_totalvideos(data.totalvideo));
     }catch(err){
-      console.log("Error while checking enrollment","=>",err);
       navigate("/error");
+      console.log("Error while getting enrolled course data","=>",err);
     }
-    toast.dismiss(loadingtoast);
-  } 
+    setloading(false);
+    toast.dismiss(loadingtoast)
+  }
   useEffect(()=>{
-    checkenrollment();
-  },[courseid]);
+     getfullcoursedata();
+  },[])
   return (
-      <div className="font-inter h-[calc(100vh-3.5rem)] overflow-hidden  flex   w-full  text-white">
-           <div className="w-[25%] hidden lg:flex">
-              <CourseBar sectiondata={sectiondata} coursetitle={coursetitle} courseid={courseid} setshowoptions={setshowoptions}/>
-            </div>  
-            {/* <div className={` ${showotpions?"visible":"hidden"} lg:hidden absolute right-10 z-30 bottom-0 top-[3.8rem] left-0 lg:w-[25%]`}>
-              <CourseBar setshowoptions={setshowoptions}/>
-            </div>  */}
-           <div className="  lg:w-[75%] ">
-              <CourseVideo setshowoptions={setshowoptions}/>
-            </div>  
+      <div className=" font-inter h-[calc(100vh-3.5rem)] overflow-hidden  flex lg:flex-row flex-col-reverse   w-full  text-white">
+          {
+            loading?(<Loader/>):(<>
+            <div className=" h-[70%] lg:h-[100%] overflow-hidden lg:w-[25%]">
+            <CourseBar/>
+         </div>
+         <div className=" h-[30%] lg:h-[100%] w-[100%] lg:w-[75%]">
+           <Outlet/>
+         </div></>)
+          }
       </div>
   )
 }
 
-export default EnrolledCourse
+export default EnrolledCourse;

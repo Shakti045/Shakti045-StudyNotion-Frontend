@@ -1,7 +1,7 @@
 function Loader() {
   return (
-    <div className=" min-h-screen">
-      <div  className="custom-loader absolute z-50 top-[50%] left-[45%] "></div>
+    <div className=" min-h-screen w-full flex flex-col justify-center items-center">
+      <div  className="custom-loader absolute"></div>
     </div>
   )
 }

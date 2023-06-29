@@ -3,6 +3,7 @@ import Cartitem from "../Components/Cart/Cartitem";
 import { capturepayment } from "../services/paymentservices";
 import { useNavigate } from "react-router";
 import { reset_cart } from "../redux/slices/cart";
+import { toast } from "react-toastify";
 function Cart() {
   const {cartitems}=useSelector((state)=>state.cart);
   const {token}=useSelector((state)=>state.auth);
@@ -20,10 +21,13 @@ function Cart() {
     for(const course of cartitems){
       courses.push(course._id);
     }
-    const result=await capturepayment(courses,token,{firstName:user.firstname,email:user.email},navigate,dispatch);
-    if(result){
-      dispatch(reset_cart());
-    }
+  try{
+    await capturepayment(courses,token,{firstName:user.firstname,email:user.email},navigate,dispatch);
+    dispatch(reset_cart()); 
+  }catch(err){
+    console.log("Error while capturing payment from cart","=>",err);
+    toast.error("Something went wrong")
+  }
   }
   return (
          <div className="font-inter h-[calc(100vh-3.5rem)] profilesection overflow-y-scroll flex flex-col gap-10  lg:p-10 p-2     text-white">

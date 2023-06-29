@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { apiConnector } from "../../services/api";
 import { ratingreview } from "../../services/url";
-import Loader from "../common/Loader";
 import { toast } from "react-toastify";
 function Review({courseid}) {
     const navigate=useNavigate();
@@ -52,7 +51,7 @@ function Review({courseid}) {
   return (
    
         
-           <div className=" flex p-4 justify-between ">
+           <div className=" flex  justify-between ">
         
             <button onClick={()=>navigate(-1)} className=" p-2 rounded-full bg-richblack-300"><AiOutlineRollback size={30} color="black"/></button>
             <button onClick={()=>setshowrating(true)} className=" px-4 py-1 bg-yellow-100 text-richblack-900 font-semibold rounded-md">Add Review</button>
@@ -61,10 +60,10 @@ function Review({courseid}) {
                   
                     <div className="   text-white flex flex-col justify-center items-center absolute z-40 top-0 right-0 left-0 bottom-0 bg-richblack-900 bg-opacity-5 backdrop-blur-sm ">
                        <div className=" border-2 rounded-xl border-richblack-500">
-                        <div className=" lg:w-[60vw] w-[90vw] flex flex-col rounded-xl bg-richblack-700">
-                          <div className=" items-center bg-richblack-600 w-full flex justify-between p-3 rounded-t-xl">
+                        <div className=" lg:w-[60vw] w-[100vw] flex flex-col rounded-xl bg-richblack-900">
+                          <div className=" items-center bg-richblack-900 border-b-2 w-full flex justify-between p-3 rounded-t-xl">
                               <h1 className=" text-3xl font-bold">Add Review</h1>
-                              <RxCross1 onClick={()=>setshowrating(false)} size={20}/>
+                              <RxCross1 className=" cursor-pointer" onClick={()=>setshowrating(false)} size={20}/>
                           </div>
                           <div className=" flex gap-3  mx-auto mt-6">
                           <img alt="profileimage"   className=" rounded-full h-[50px] w-[50px]" src={user?.profilephoto}></img>

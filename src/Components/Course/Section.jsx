@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SectionWithSubsection from "./SectionWithSubsection";
-function Section({sectiondata}) {
+function Section({sectiondata,duration="00h 00 min"}) {
    const [activelist,setactivelist]=useState([]);
    function activelisthandler(id){
     const index=activelist.indexOf(id);
@@ -22,7 +22,7 @@ function Section({sectiondata}) {
   return (
     <div>
     <div className=" flex justify-between">
-                 <p>{sectiondata.length} section(s) {calculatevideos()} lecture(s) 1m 30s total length</p>
+                 <p>{sectiondata.length} section(s) {calculatevideos()} lecture(s) {duration} total length</p>
                  <button onClick={()=>setactivelist([])}  className=" text-yellow-50">Collapse all sections</button>
   </div>
     <div className=" mt-7 border-[2px] border-richblack-700 flex flex-col">

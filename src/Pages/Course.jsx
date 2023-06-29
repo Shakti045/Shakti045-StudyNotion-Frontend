@@ -33,6 +33,7 @@ function Course() {
     const {cartitems}=useSelector((state)=>state.cart)
     const {user} =useSelector((state)=>state.user);
     const [rating,setrating]=useState(0);
+    const [duration,setduration]=useState();
     const navigate=useNavigate();
      useEffect(()=>{
         const index =cartitems.findIndex((item) => item._id===courseid)
@@ -60,6 +61,7 @@ function Course() {
         const {data}=await axios.post(course.getcoursedetailsurl,{courseid:courseid});
         setcoursedata(data.details)
         setsectiondata(data.details.sections)
+        setduration(data?.duration);
       }catch(err){
         console.log(err);
       }
@@ -90,6 +92,7 @@ function Course() {
         dispatch(addto_cart({_id:courseid,thumbnail:coursedata?.thumbnail,price:coursedata?.price,rating:coursedata?.ratingsandreview,title:coursedata?.title,category:coursedata?.category?.name}));
         setincart(true);
     }
+
     function removefromcart(){
         dispatch(removefrom_cart(courseid));
         setincart(false);
@@ -99,7 +102,8 @@ function Course() {
         courserating();
        
         // eslint-disable-next-line 
-    },[location.pathname])
+    },[location.pathname]);
+
   return (
        <>
          {
@@ -127,7 +131,7 @@ function Course() {
                  </div>
                  <div className=" mt-10 flex flex-col gap-2 ">
                  <p className=" text-3xl font-bold">Course Content</p>
-                 <Section sectiondata={sectiondata}></Section>
+                 <Section duration={duration} sectiondata={sectiondata}></Section>
                   <div className=" flex flex-col gap-2 mt-10">
                        <div className=" flex gap-4 items-center">
                        <img className=" h-[60px] w-[60px] rounded-full" src={coursedata?.instructor?.profilephoto} alt="Instructorprofile"></img>

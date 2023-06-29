@@ -1,4 +1,4 @@
-import { toast } from "react-hot-toast";
+import {toast} from "react-toastify"
 import { apiConnector } from "../../services/api";
 import { payment } from "../../services/url";
 import { useSelector } from "react-redux";

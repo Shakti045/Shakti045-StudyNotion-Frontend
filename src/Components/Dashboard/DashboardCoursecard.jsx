@@ -3,9 +3,11 @@ import Img from "../common/LazyLoadImage"
 import { useDispatch, useSelector } from "react-redux"
 import { addto_cart } from "../../redux/slices/cart";
 import { toast } from "react-toastify";
+import { capturepayment } from "../../services/paymentservices";
 function DashboardCoursecard({_id,description,price,category,instructor,thumbnail,title,studentsenrolled,ratingsandreview}) {
   const {user}=useSelector((state)=>state.user); 
   const {cartitems}=useSelector((state)=>state.cart);
+  const {token}=useSelector((state)=>state.auth);
   const navigate=useNavigate();
   const dispatch=useDispatch();
   function addtocathandler(){
@@ -16,7 +18,7 @@ function DashboardCoursecard({_id,description,price,category,instructor,thumbnai
     dispatch(addto_cart({_id:_id,thumbnail:thumbnail,price:price,rating:ratingsandreview,title:title,category:category?.name}))
  }
  function buynowhandler(){
-  
+   capturepayment([_id],token,user,navigate,dispatch);
  }
   return (
       <div className=" border-[1px] border-richblack-700 p-5 flex lg:flex-row flex-col justify-between items-start w-full">

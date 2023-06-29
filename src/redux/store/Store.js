@@ -6,6 +6,7 @@ import { loadingslice } from "../slices/loadig";
 import { wishlistslice } from "../slices/wishlist";
 import { videoslice } from "../slices/video";
 import { courseslice } from "../slices/course";
+import { enrolledcourseslice } from "../slices/enrolledcourse";
 
 
 const rootreducer=combineReducers({
@@ -15,7 +16,8 @@ const rootreducer=combineReducers({
     loading:loadingslice.reducer,
     wishlist:wishlistslice.reducer,
     video:videoslice.reducer,
-    course:courseslice.reducer
+    course:courseslice.reducer,
+    enrolledcourse:enrolledcourseslice.reducer
 })
 
 const store=configureStore({

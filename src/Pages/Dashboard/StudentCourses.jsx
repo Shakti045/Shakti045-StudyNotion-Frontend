@@ -1,6 +1,6 @@
 import { apiConnector } from "../../services/api"
 import { profile } from "../../services/url";
-import {toast} from "react-hot-toast"
+import {toast} from "react-toastify"
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ import StudentEnrolledCourseCard from "../../Components/Dashboard/StudentEnrolle
 function StudentCourses() {
     const {token}=useSelector((state)=>state.auth);
     const [loading,setloading]=useState(false);
+    const [progressarray,setprogressarray]=useState([]);
     const headers={
         Authorization:`Bearer ${token}`
     }
@@ -19,7 +20,7 @@ function StudentCourses() {
        try{
           const result=await apiConnector("GET",profile.getenrolledcourseurl,null,headers);
         setcourses(result.data.courses);
-        // console.log(result.data.courses);
+        setprogressarray(result.data?.progress);
           if(result.status===200){
             toast.success("Details Fetched Successfully")
           }
@@ -47,8 +48,8 @@ function StudentCourses() {
         <Link to="/dashboard/allcourses"><button className=" bg-yellow-100 text-richblack-900 p-3 rounded-md">Click Here To Visit Course Page</button></Link>
         </div>):(<div className=" grid  lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 mx-auto gap-10">
              {
-                courses.map((data)=>{
-                    return <StudentEnrolledCourseCard key={data?._id} {...data}></StudentEnrolledCourseCard>
+                courses.map((data,index)=>{
+                    return <StudentEnrolledCourseCard progress={progressarray[index]} key={data?._id} {...data}></StudentEnrolledCourseCard>
                 })
              }
         </div>)

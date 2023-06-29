@@ -28,6 +28,7 @@ import EnrolledCourse from "./Pages/EnrolledCourse/EnrolledCourse";
 import Teachercourses from "./Pages/Dashboard/Teachercourses";
 import SocialAuth from "./Pages/SocialAuth";
 import TeacherDashboard from "./Pages/Dashboard/TeacherDashboard";
+import CourseVideo from "./Components/EnrolledCourse/CourseVideo";
 function App() {
   return (
      <div className=" overflow-x-hidden min-h-screen overflow-y-hidden   bg-richblack-900">
@@ -55,7 +56,11 @@ function App() {
                     <Route path="/dashboard/teacher/mycourses" element={<Teachercourses/>}></Route>
                     <Route path="/dashboard/teacher-dashboard" element={<TeacherDashboard/>}></Route>
         </Route>
-        <Route path="/enrolled-courses/:courseid" element={<IsStudent><EnrolledCourse/></IsStudent>}></Route>
+        
+        <Route  element={<IsStudent><EnrolledCourse/></IsStudent>}>
+           <Route path="/course/:courseid/section/:sectionid/subsection/:subsectionid" element={<IsStudent><CourseVideo/></IsStudent>}></Route>
+        </Route>
+
         <Route path="/socialauth" element={<SocialAuth/>}></Route>
       </Routes>  
      </div>

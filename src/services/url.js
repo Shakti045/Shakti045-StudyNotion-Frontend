@@ -25,7 +25,8 @@ export const course={
     getcoursesofuserurl:baseurl+"/getcoursesofuser",
     deletecourseurl:baseurl+"/deleteCourse",
     updatecoursestatusurl:baseurl+"/updatecoursestatus",
-    getallcoursesurl:baseurl+"/getAllCourses"
+    getallcoursesurl:baseurl+"/getAllCourses",
+    getfulldetailsofcourseurl:baseurl+"/getfulldetailsofcourse"
 }
 
 
@@ -55,7 +56,8 @@ export const section={
     getsectionsofacourseurl:baseurl+"/getsectionsofacourse",
     addsectionurl:baseurl+"/addSection",
     deletesectionurl:baseurl+"/deleteSection",
-    updatesectionurl:baseurl+"/updateSection"
+    updatesectionurl:baseurl+"/updateSection",
+    markascompleteurl:baseurl+"/markascomplete"
 }
 
 
@@ -76,8 +78,6 @@ export const sociallogin={
     linkedinurl:socialbaseurl+"/linkedin",
     githuburl:socialbaseurl+"/github"
 }
-
-
 
 
 
