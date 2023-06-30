@@ -1,10 +1,11 @@
 import Rating from "../Course/Rating";
+import defaultpic from "../../assets/Images/default profilepic.jpg"
 function Ratingcard({course,rating,review,user}) {
     // console.log(course,rating,review,user);
   return (
     <div className=" flex flex-col h-[200px] gap-4 p-3 bg-richblack-800 rounded-md text-white">
         <div className=" flex gap-2 items-center">
-        <img className=" h-[50px] w-[50px] rounded-full" src={user?.profilephoto} alt="userlogo"></img>
+        <img className=" h-[50px] w-[50px] rounded-full" src={user?.profilephoto?user?.profilephoto:defaultpic} alt="userlogo"></img>
         <div className=" flex flex-col ">
             <h1 className=" text-lg font-semibold">{user?.firstname} {user?.lastname}</h1>
             <p className=" text-pure-greys-200">{user?.email}</p>

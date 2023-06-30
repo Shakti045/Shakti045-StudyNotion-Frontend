@@ -119,10 +119,17 @@ useEffect(()=>{
         lastcheck();
     }
 },[currentcouredata,courseid,sectionid,subsectionid,location.pathname])
+const playerConfig = {
+  file: {
+    attributes: {
+      controlsList: 'nodownload', // Disable download option
+    }
+  }
+}
   return (
     <div className=" relative w-full h-full">
        {
-        videourl?<ReactPlayer onStart={starthandler}  ref={reference} onEnded={endhandler}  width={"100%"} height={"100%"} controls  url={videourl}/>:<p className=" text-3xl font-bold text-center relative top-[40vh]">No Video Uploaded By Instructor</p>
+        videourl?<ReactPlayer  config={playerConfig} onStart={starthandler}  ref={reference} onEnded={endhandler}  width={"100%"} height={"100%"} controls  url={videourl}/>:<p className=" text-3xl font-bold text-center relative lg:top-[40vh] top-[10vh]">No Video Uploaded By Instructor</p>
        }
        
         {

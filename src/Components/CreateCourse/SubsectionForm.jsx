@@ -9,9 +9,8 @@ function SubsectionForm({seshowsubsectionform,addsubsection,updatesubsection}) {
     const {
        register,
        setValue,
-       formState:{errors,isSubmitSuccessful},
+       formState:{errors},
        handleSubmit,
-       reset,
        getValues
     }=useForm();
     const {subsectioneditmode}=useSelector((state)=>state.course)
@@ -111,7 +110,7 @@ function SubsectionForm({seshowsubsectionform,addsubsection,updatesubsection}) {
                 <button onClick={()=>seshowsubsectionform(false)}><RxCross2 size={30}/></button>
              </div>
             
-            <form>
+            <form >
                 <div className=" flex flex-col gap-7 lg:p-10 p-2">
                    
          <div className=" flex flex-col gap-1">

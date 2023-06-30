@@ -41,7 +41,8 @@ function CourseBuilder() {
       const loadingtoast=toast.loading("Please Wait......")
      try{
        const result=await apiConnector("POST",section.addsectionurl,{courseid:courseid,...data},{
-        Authorization:`Bearer ${token}`
+        Authorization:`Bearer ${token}`,
+        'Content-Type': 'multipart/form-data'
        });
        if(result.status===200){
         //  setsections([...sections,result.data?.section])

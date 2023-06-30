@@ -48,8 +48,8 @@ function DashboardCoursecard({_id,description,price,category,instructor,thumbnai
            {
             studentsenrolled.indexOf(user?._id)===-1?(<><button onClick={addtocathandler} className=" p-2 rounded-md bg-pure-greys-200  text-black font-semibold">Add To Cart</button>
             <button  onClick={buynowhandler} className=" p-2 rounded-md bg-yellow-100 text-black font-semibold">Buy Now</button></>):(<>
-              <button onClick={()=>navigate(`/enrolled-courses/${_id}`)} className=" p-2 rounded-md bg-pure-greys-200  text-black font-semibold">Go To Your Course</button>
-              <button onClick={()=>navigate(`/enrolled-courses/${_id}`)} className=" p-2 rounded-md bg-pure-greys-200  text-black font-semibold">Add Review To Course</button>
+              <button onClick={()=>navigate(`/dashboard/enrolled-courses`)} className=" p-2 rounded-md bg-pure-greys-200  text-black font-semibold">Go To Your Course</button>
+              <button onClick={()=>navigate(`/dashboard/enrolled-courses`)} className=" p-2 rounded-md bg-pure-greys-200  text-black font-semibold">Add Review To Course</button>
             </>)
            }
          </div>
