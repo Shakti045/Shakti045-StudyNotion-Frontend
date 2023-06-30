@@ -19,6 +19,7 @@ function Settings() {
   const [file,setfile]=useState(null);
   const [filename,setfilename]=useState();
   const [passsdata,setpassdata]=useState({password:"",newpassword:""});
+  const[image,setimage]=useState();
   const profiledata=user.profile;
   const navigate=useNavigate();
   const {
@@ -26,8 +27,18 @@ function Settings() {
     handleSubmit,
   }=useForm();
   function filechangehandler(e){
-    setfilename(e.target.files[0].name)
-    setfile(e.target.files[0]);
+    const file=e.target.files[0];
+    setfilename(file.name)
+    setfile(file);
+    const reader = new FileReader();
+    
+        reader.onload = () => {
+          setimage(reader.result)
+        };
+    
+        if (file) {
+          reader.readAsDataURL(file);
+        }
   }
   async function filehandler(){
     const loadingtoast=toast.loading("Uploading.....")
@@ -124,7 +135,7 @@ function Settings() {
 
             <div className=" border-[1px] border-richblack-600  flex justify-between items-center lg:p-10 p-2 rounded-md bg-richblack-800">
               <div className=" flex gap-3  items-center">
-                    <img className=" h-[80px] w-[80px] rounded-full" src={user.profilephoto} alt="profilephoto"></img>
+                    <img className=" h-[80px] w-[80px] rounded-full" src={image?image:user.profilephoto} alt="profilephoto"></img>
                     <div className=" flex flex-col gap-1">
                       <h1 className=" text-lg">Change Profile Picture</h1>
                        <div className=" flex gap-2 items-center">
@@ -132,7 +143,7 @@ function Settings() {
                          <input type="file" id="fileupload" accept=".jpg ,.jpeg, .svg,.gif,.webp" 
                          style={{ display: 'none' }} onChange={filechangehandler}></input>
                          <button onClick={uploadhandler} className=" flex gap-2 items-center  py-2 px-4 rounded-md text-richblack-900 bg-yellow-100 ">Upload<BsUpload style={{fontWeight:900}}/></button>
-                         <span className=" text-pink-300">{filename}</span>
+                         <span className=" hidden lg:block text-pink-300">{filename}</span>
                        </div> 
                       </div>
                     </div>

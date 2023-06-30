@@ -50,7 +50,8 @@ function previoushandler(){
     const sectionindex=currentcouredata?.sections.findIndex((e)=>e._id===sectionid);
     const subsectionindex=currentcouredata?.sections[sectionindex]?.subsections.findIndex((e)=>e._id===subsectionid);
   if(subsectionindex===0){
-   navigate(`/course/${courseid}/section/${currentcouredata?.sections[sectionindex-1]._id}/subsection/${currentcouredata?.sections[sectionindex-1].subsections[0]._id}`);
+    const subsections=currentcouredata?.sections[sectionindex-1].subsections;
+   navigate(`/course/${courseid}/section/${currentcouredata?.sections[sectionindex-1]._id}/subsection/${currentcouredata?.sections[sectionindex-1].subsections[subsections.length-1]._id}`);
   }else{
     navigate(`/course/${courseid}/section/${sectionid}/subsection/${currentcouredata?.sections[sectionindex].subsections[subsectionindex-1]._id}`);
   }
