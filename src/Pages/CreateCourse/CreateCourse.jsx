@@ -21,9 +21,9 @@ function CreateCourse() {
     <div className="font-inter h-[calc(100vh-3.5rem)] profilesection overflow-y-scroll flex flex-col gap-10 lg:p-10 p-2 w-full text-white">
           <h1 className=" text-3xl font-semibold">{editmode===false?"Add A New Course":"Make Changes To Your Course"}</h1>
            {
-            loading===true?(<div className=" w-full flex flex-col items-center justify-center">
+            loading===true?(
               <Loader/>
-            </div>):(<><Rendersteps/>
+            ):(<><Rendersteps/>
             {step===1 && (<CourseInformation/>)}
             {step===2 && (<CourseBuilder/>)}
             {step===3 && (<CoursePublish/>)}</>)

@@ -4,7 +4,7 @@ import { course } from "../../services/url"
 import { useEffect, useState } from "react";
 import TeacherCourses from "../../Components/Dashboard/TeacherCourses";
 import Loader from "../../Components/common/Loader";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import {  useNavigate } from "react-router-dom";
 import { set_editmode } from "../../redux/slices/course";
 function Teachercourses() {
@@ -22,7 +22,7 @@ function Teachercourses() {
             })
             if(result.status===200){
                 setcourses(result.data.courses);
-                toast.success("Data Fetched Successfully");
+                // toast.success("Data Fetched Successfully");
             }
             
         }catch(err){

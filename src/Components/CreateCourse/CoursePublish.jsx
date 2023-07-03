@@ -58,6 +58,7 @@ function CoursePublish() {
       <div className=" flex gap-3 justify-end">
           <button onClick={()=>dispatch(set_step(2))} className=" p-3 px-5 rounded-lg bg-richblack-500">Back</button>
           <button onClick={savehandler}  className=" p-3 px-5 rounded-lg bg-yellow-100 text-black">Save Changes</button>
+          <button onClick={()=>navigate("/dashboard/teacher/mycourses")}  className=" p-3 px-5 rounded-lg bg-yellow-100 text-black">Go Next</button>
          </div>
     </div>
   )

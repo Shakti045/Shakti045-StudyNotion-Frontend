@@ -44,6 +44,7 @@ export const profile={
     updateprofileurl:baseurl+"/updateProfile",
     deleteaccounturl:baseurl+"/deleteAccount",
     getenrolledcourseurl:baseurl+"/getEnrolledCourses",
+    getinstructordashboarddataurl:baseurl+"/getinstructordashboarddata"
 }
 
 export const ratingreview={
@@ -78,13 +79,3 @@ export const sociallogin={
     linkedinurl:socialbaseurl+"/linkedin",
     githuburl:socialbaseurl+"/github"
 }
-
-
-
-
-
-
-
-
-
-

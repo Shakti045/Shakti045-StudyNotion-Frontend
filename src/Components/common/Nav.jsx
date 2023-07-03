@@ -4,11 +4,15 @@ import { useLocation } from "react-router-dom"
 import { useEffect, useState } from "react";
 import { FaShoppingCart} from "react-icons/fa";
 import {FiMenu} from "react-icons/fi"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ProfileDropdown from "../Home/ProfileDropdown";
 import { apiConnector } from "../../services/api";
 import { category } from "../../services/url";
 import {FaArrowAltCircleDown} from "react-icons/fa"
+import jwtdecode from "jwt-decode";
+import { set_token } from "../../redux/slices/auth";
+import { set_user } from "../../redux/slices/user";
+import { toast } from "react-toastify";
 function Nav() {
     const location=useLocation();
     const [bg,setbg]=useState(true);
@@ -17,6 +21,7 @@ function Nav() {
     const {token}=useSelector((state)=>state.auth)
     const {user}=useSelector((state)=>state.user);
     const {cartitems}=useSelector((state)=>state.cart);
+    const dispatch=useDispatch();
     async function getcategories(){
        try{
         const {data}= await  apiConnector("GET",category.showAllCategoriesurl)
@@ -25,8 +30,22 @@ function Nav() {
         console.log("Error while fetching all categories in nav.js","=>",err);
        }
     }
+    function checktokenvalidity(){
+      const decoded=jwtdecode(token);
+        const exppirationtime=decoded.exp;
+        const currentTime = Math.floor(Date.now() / 1000)
+         if(currentTime>exppirationtime){
+            dispatch(set_token(null));
+            dispatch(set_user(null));
+            localStorage.clear();
+            toast.error("Session expired kindly login")
+         }
+    }
     useEffect(()=>{
       getcategories();
+      if(token){
+        checktokenvalidity();
+      }
     },[])
     useEffect(()=>{
         if(location.pathname!=="/"){
