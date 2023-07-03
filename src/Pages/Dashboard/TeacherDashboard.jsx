@@ -17,6 +17,7 @@ function TeacherDashboard() {
   const [totalincome,settotalincome]=useState(0);
   const navigate=useNavigate();
   async function getdashboarddata(){
+    const loadingtoast=toast.loading("Please wait......")
     try{
       const {data}=await apiConnector("GET",profile.getinstructordashboarddataurl,null,{
         Authorization:`Bearer ${token}`
@@ -29,6 +30,7 @@ function TeacherDashboard() {
       console.log("Error while fetching teacher dashboard","=>",err);
       toast.error("Something went wrong")
     }
+    toast.dismiss(loadingtoast);
   }
   function calculatetotalstudent(data){
     let k=0;

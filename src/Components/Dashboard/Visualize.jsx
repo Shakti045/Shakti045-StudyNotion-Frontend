@@ -4,7 +4,7 @@ import {Pie,Bar} from "react-chartjs-2"
 Chart.register(...registerables);
 function Visualize({data}) {
     const [toggle,settoggle]=useState(true);
-    const [option,setoption]=useState(false);
+    const [option,setoption]=useState(true);
     function getrandomcolor(k){
      let colors=[];
      for(let i=0;i<k;i++){
@@ -42,8 +42,9 @@ function Visualize({data}) {
          <button onClick={()=>settoggle(false)} className={`${toggle===false?"bg-yellow-100":' bg-yellow-500'}  h-fit p-2 rounded-md text-black font-semibold`}>Income</button>
        </div>
        <div className=" flex gap-6">
+       <button onClick={()=>setoption(true)} className={`${option?"bg-yellow-100":' bg-yellow-500'} h-fit p-2 rounded-md text-black font-semibold`}>Pie Chart</button>
          <button onClick={()=>setoption(false)} className={`${option===false?"bg-yellow-100":' bg-yellow-500'}  h-fit p-2 rounded-md text-black font-semibold`}>Bar Graph</button>
-         <button onClick={()=>setoption(true)} className={`${option?"bg-yellow-100":' bg-yellow-500'} h-fit p-2 rounded-md text-black font-semibold`}>Pie Chart</button>
+
        </div>
          </div>
         <div className=" h-full w-full flex flex-col justify-center  items-center" >
