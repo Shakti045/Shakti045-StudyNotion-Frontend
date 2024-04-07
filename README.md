@@ -17,6 +17,13 @@ This starter pack includes a basic setup for using **Tailwind CSS with React**. 
     npm install
     ```
 
+1. Install the required packages.
+    ```sh
+    create .env file and give the value given below
+    REACT_APP_BASE_URL = http://localhost:5000/api/v1
+    backend can be found by visiting link=> https://github.com/Shakti045/dribble-backend
+    ```
+
 1. Start the development server.
     ```sh
     npm start
