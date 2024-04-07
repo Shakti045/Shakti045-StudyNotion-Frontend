@@ -17,7 +17,7 @@ This starter pack includes a basic setup for using **Tailwind CSS with React**. 
     npm install
     ```
 
-1.create .env file.
+1. create env file.
     ```sh
     create .env file and give the value given below
     REACT_APP_BASE_URL = http://localhost:5000/api/v1
