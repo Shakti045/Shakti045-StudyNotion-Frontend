@@ -24,8 +24,8 @@ function Nav() {
     const dispatch=useDispatch();
     async function getcategories(){
        try{
-        const {data}= await  apiConnector("GET",category.showAllCategoriesurl)
-        setcategories(data.Categories);
+        const {data}= await  apiConnector("GET",category.showAllCategoriesurl);
+        setcategories(data?.Categories || []);
        }catch(err){
         console.log("Error while fetching all categories in nav.js","=>",err);
        }

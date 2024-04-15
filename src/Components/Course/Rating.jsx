@@ -2,7 +2,7 @@ import StarRatings from "react-star-ratings"
 function Rating({rating=4.5,numberofratings=5}) {
   return (
     <div  className=" flex gap-2 items-center">
-        <p className=" text-yellow-100">{rating}</p>
+        <p className=" text-yellow-100">{rating.toFixed(2)}</p>
         <StarRatings
     rating={rating}
     starRatedColor="yellow"

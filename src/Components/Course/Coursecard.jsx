@@ -11,7 +11,7 @@ function Coursecard({title,language,price,thumbnail,_id,ratingsandreview}) {
       acc += curr.rating
       return acc
     }, 0)
-    const avgrating=totalReviewCount/ratingsandreview.length;
+    let avgrating=(totalReviewCount/ratingsandreview.length);
     settotalrating(avgrating)
   }
 
@@ -34,7 +34,7 @@ function Coursecard({title,language,price,thumbnail,_id,ratingsandreview}) {
        </div>
         <div className=" flex gap-2 items-center  ">
              <Rating rating={totalrating}/>
-        <p className=" opacity-40">{ratingsandreview.length} Raings</p>
+        <p className=" opacity-40">{ratingsandreview.length} Ratings</p>
         </div>
        <p className=" text-yellow-50">Rs.{price}</p>
        </div>

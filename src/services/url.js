@@ -1,5 +1,5 @@
-const baseurl="https://studynotionbackend.onrender.com/api/v1";
-const socialbaseurl="https://studynotionbackend.onrender.com/auth";
+const baseurl=process.env.REACT_APP_BACKEND_URL;
+const socialbaseurl=process.env.REACT_APP_SOCIALLOGIN_URL;
 
 export const auth={
     loginurl:baseurl+"/login",
